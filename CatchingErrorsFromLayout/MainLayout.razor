@@ -1,0 +1,19 @@
+﻿@inherits LayoutComponentBase
+
+<main>
+    <CascadingValue Value="MainErrorBoundary">
+        <ErrorBoundary @ref="MainErrorBoundary">
+            <ChildContent>
+                @Body
+            </ChildContent>
+            <ErrorContent>
+               @* <div>This is a custom error message. <button @onclick="_ => MainErrorBoundary.Recover()">Resolve Error</button></div>*@
+               <CatchingErrorsFromLayout.Pages.CustomError/>
+            </ErrorContent>
+        </ErrorBoundary>
+    </CascadingValue>
+</main>
+
+@code {
+    public ErrorBoundary MainErrorBoundary { get; set; } = default!;
+}
